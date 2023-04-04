@@ -13,37 +13,61 @@ namespace ChemicalApp
         static int lowChemical = 0;
         static float lowestEfficiency = 17;
 
-      
+
         //methods and/or functions
-        
-        static void TestResult(float finalEfficiency, int chemical)
+
+        static int CheckChemical()
         {
-            Console.WriteLine($"\n\n{allChemicals[chemical-1]} has an efficiency rating of {finalEfficiency}.");
+            while (true)
+            {
+                //User choose chemical and display
+
+                Console.WriteLine("Choose a chemical from the list below by entering its corrosponding number:");
+                Console.WriteLine("\n1. White vinegar\n2. Baking soda\n3. Bleach\n4. Ethanol\n5. Hydrogen Peroxide\n6. Lemon\n7. Detergent\n8. Eucalyptus oil\n9. Peppermint oil\n10. Lavender oil\n");
+                
+                try
+                {
+                    int chemicalName = Convert.ToInt32(Console.ReadLine());
+
+                    if (chemicalName >= 1 && chemicalName <= 10)
+                    {
+                        return chemicalName;
+                    }
+                    Console.WriteLine("Error: You can only enter a number from 1-10");
+                }
+                catch
+                {
+                    Console.WriteLine("Error: You must enter a number from the list");
+                }         
+            }
+        }
+
+
+        static void TestResult(float finalEfficiency, int chemicalName)
+        {
+            Console.WriteLine($"\n\n{allChemicals[chemicalName - 1]} has an efficiency rating of {finalEfficiency}.");
 
 
             if (finalEfficiency > topEfficiency)
             {
                 topEfficiency = finalEfficiency;
-                topChemical = chemical;
+                topChemical = chemicalName;
 
             }
 
             if (finalEfficiency < lowestEfficiency)
             {
                 lowestEfficiency = finalEfficiency;
-                lowChemical = chemical;
+                lowChemical = chemicalName;
             }
         }
 
 
         static void OneChemical()
         {
-            //User choose chemical and display
+            int chosenChemical = CheckChemical();
 
-            Console.WriteLine("Choose a chemical from the list below by entering its corrosponding number:");
-            Console.WriteLine("\n1. White vinegar\n2. Baking soda\n3. Bleach\n4. Ethanol\n5. Hydrogen Peroxide\n6. Lemon\n7. Detergent\n8. Eucalyptus oil\n9. Peppermint oil\n10. Lavender oil\n");
-
-            int chemical = Convert.ToInt32(Console.ReadLine());
+            int chemicalName = chosenChemical;
 
             float sumEfficiency = 0;
 
@@ -79,7 +103,8 @@ namespace ChemicalApp
 
             float finalEffciency = sumEfficiency / 5;
 
-            TestResult(finalEffciency, chemical);
+            TestResult(finalEffciency, chemicalName);
+
         }
 
 
