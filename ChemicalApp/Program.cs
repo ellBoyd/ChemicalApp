@@ -16,6 +16,26 @@ namespace ChemicalApp
 
         //methods and/or functions
 
+        static string CheckFlag()
+        {
+            while (true)
+            {
+                //get user's choice
+                Console.WriteLine("Press <ENTER> to add another employee or type 'X'to quit\n");
+                string userInput = Console.ReadLine();
+
+                //Convert user input to uppercase
+                userInput = userInput.ToUpper();
+
+                if (userInput.Equals("X") || userInput.Equals(""))
+                {
+                    return userInput;
+                }
+
+                Console.WriteLine("Error: Please enter a correct choice.");
+            }
+        }
+
         static int CheckChemical()
         {
             while (true)
@@ -23,7 +43,8 @@ namespace ChemicalApp
                 //User choose chemical and display
 
                 Console.WriteLine("Choose a chemical from the list below by entering its corrosponding number:");
-                Console.WriteLine("\n1. White vinegar\n2. Baking soda\n3. Bleach\n4. Ethanol\n5. Hydrogen Peroxide\n6. Lemon\n7. Detergent\n8. Eucalyptus oil\n9. Peppermint oil\n10. Lavender oil\n");
+                Console.WriteLine("\n1. White vinegar\n2. Baking soda\n3. Bleach\n4. Ethanol" +
+                    "\n5. Hydrogen Peroxide\n6. Lemon\n7. Detergent\n8. Eucalyptus oil\n9. Peppermint oil\n10. Lavender oil\n");
                 
                 try
                 {
@@ -118,15 +139,14 @@ namespace ChemicalApp
 
                 OneChemical();
 
-                Console.WriteLine("\nPress <ENTER> to add new chemical or enter 'X' to end program");
-                flag = Console.ReadLine();
+                flag = CheckFlag();
             }
 
-            
             Console.WriteLine($"\nHere are the results!\n");
 
             //Determine most and least efficient chemicals
-            Console.WriteLine($"{allChemicals[topChemical - 1]} has the highest efficiency rating of {topEfficiency}, and {allChemicals[lowChemical - 1]} has the lowest efficiency rating of {lowestEfficiency}!");
+            Console.WriteLine($"{allChemicals[topChemical - 1]} has the highest efficiency rating of {topEfficiency}, " +
+                $"and {allChemicals[lowChemical - 1]} has the lowest efficiency rating of {lowestEfficiency}!");
         }
     }
 }
