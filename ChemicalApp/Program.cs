@@ -7,7 +7,8 @@ namespace ChemicalApp
     class Program
     {
         //global variables
-        static List<string> allChemicals = new List<string>() { "White vinegar", "Baking soda", "Bleach", "Ethanol", "Hydrogen peroxide", "Lemon", "Detergent", "Eucalyptus oil", "Peppermint oil", "Lavender Oil" };
+        static List<string> allChemicals = new List<string>() { "White Vinegar", "Baking Soda", "Bleach", "Ethanol", "Hydrogen peroxide", "Lemon", "Detergent",
+            "Eucalyptus Oil", "Peppermint Oil", "Lavender Oil" };
         static List<int> testedChemicals = new List<int>();
         static List<float> efficienciesList = new List<float>();
         static int topChemical = 0;
@@ -45,6 +46,17 @@ namespace ChemicalApp
             }
         }
 
+        static string TestedChemicals()
+        {
+            string testedChemicalsOutput = "Efficiency of each chemical:\n";
+
+            for (int chemicalIndex = 0; chemicalIndex < efficienciesList.Count; chemicalIndex++)
+            {
+                testedChemicalsOutput += $"{chemicalIndex + 1}. {allChemicals[testedChemicals[chemicalIndex]]} {efficienciesList[chemicalIndex]}\n";
+            }
+
+            return testedChemicalsOutput;
+        }
 
         static int CheckChemical()
         {
@@ -54,14 +66,18 @@ namespace ChemicalApp
                 {
                     //get user to enter a chemical
                     Console.WriteLine("Choose a chemical from the list below by entering its corrosponding number:");
-                    Console.WriteLine("\n1. White vinegar\n2. Baking soda\n3. Bleach\n4. Ethanol" +
+                    Console.WriteLine("\n1. White Vinegar\n2. Baking Soda\n3. Bleach\n4. Ethanol" +
                         "\n5. Hydrogen Peroxide\n6. Lemon\n7. Detergent\n8. Eucalyptus oil\n9. Peppermint oil\n10. Lavender oil\n");
+
+                    
 
                     //check if user has entered same chemical more than once
                     int chosenChemical = Convert.ToInt32(Console.ReadLine());
                     if (testedChemicals.Contains(chosenChemical))
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Error: Chemical has already been tested");
+                        Console.ResetColor();
                     }
 
                     //check if user has entered a number within the range of choices, and hasn't entered a string
@@ -72,12 +88,16 @@ namespace ChemicalApp
                     
                     else
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Error: You can only enter a number from 1-10");
+                        Console.ResetColor();
                     }
                 }
                 catch (Exception)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Error: You can only enter a number from 1-10");
+                    Console.ResetColor();
                 }
             }
         }
@@ -87,7 +107,7 @@ namespace ChemicalApp
             while (true)
             {
                 //get user's choice
-                Console.WriteLine("Press <ENTER> to add another chemical or type 'X'to quit\n");
+                Console.Write($"\nPress {Console.ForegroundColor = ConsoleColor.Yellow}<ENTER> {Console.ResetColor()} to add another chemical or type 'X'to quit\n");
                 string userInput = Console.ReadLine();
 
                 //Convert user input to uppercase
@@ -98,14 +118,20 @@ namespace ChemicalApp
                     return userInput;
                 }
 
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Error: Please enter a correct choice.");
+                Console.ResetColor();
             }
         }
 
         //method to test least and most efficient chemical
         static void TestResult(float finalEfficiency, int chemicalName)
         {
-            Console.WriteLine($"\n\n{allChemicals[chemicalName - 1]} has an efficiency rating of {finalEfficiency}.");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\nResults are in!");
+            Console.ResetColor();
+
+            Console.WriteLine($"{allChemicals[chemicalName - 1]} has an efficiency rating of {finalEfficiency}.");
             
             if (finalEfficiency > topEfficiency)
             {
@@ -119,7 +145,6 @@ namespace ChemicalApp
                 lowestEfficiency = finalEfficiency;
                 lowChemical = chemicalName;
             }
-             
         }
 
         //Component 1
@@ -129,6 +154,10 @@ namespace ChemicalApp
 
             float sumEfficiency = 0;
 
+            Console.Clear();
+            Console.WriteLine($"----- Test Results ------");
+
+           
             //Loop 5 time (below)
             for (int test = 0; test < 5; test++)
             {
@@ -138,7 +167,7 @@ namespace ChemicalApp
 
 
                 //Display amount of live germs
-                Console.WriteLine($"\n{intialGerms} live germs are being used to test the chemical.");
+                Console.WriteLine($"\n\n{intialGerms} live germs are have been added.");
 
                 //Randomly generate amount of time taken
                 Random rndTime = new Random();
@@ -148,7 +177,8 @@ namespace ChemicalApp
                 Random aftGerm = new Random();
                 int afterGerm = aftGerm.Next(0, intialGerms);
 
-                Console.WriteLine($"After {time} secs, {afterGerm} germs remained.");
+                
+                Console.WriteLine($"- After {time} secs, {afterGerm} live germs remained.");
 
                 //Determine the efficiency rating of the chemical killed the germs
 
@@ -162,17 +192,12 @@ namespace ChemicalApp
             efficienciesList.Add( sumEfficiency / 5);
 
             TestResult(efficienciesList[efficienciesList.Count-1], testedChemicals[testedChemicals.Count-1]);
-
         }
 
 
         //Component 2
         static void Main(string[] args)
         {
-            
-            
-            
-            
             string flag = "";
             while (!flag.Equals("X"))
             {
@@ -181,15 +206,17 @@ namespace ChemicalApp
                 OneChemical();
 
                 flag = CheckFlag();
+
+                Console.Clear();
             }
 
             Console.WriteLine($"\nHere are the results!\n");
 
-            //Determine most and least efficient chemicals
-            Console.WriteLine($"{allChemicals[topChemical - 1]} has the highest efficiency rating of {topEfficiency}, " +
-                $"and {allChemicals[lowChemical - 1]} has the lowest efficiency rating of {lowestEfficiency}!");
+            Console.WriteLine(TestedChemicals());
 
-            //Console.WriteLine($"List of results is: {efficienciesList[efficienciesList.Count - 1]}, {testedChemicals[testedChemicals.Count - 1]}");
+            //Determine most and least efficient chemicals
+            Console.WriteLine($"{allChemicals[topChemical -1]} has the highest efficiency rating of {topEfficiency}, " +
+                $"and {allChemicals[lowChemical -1]} has the lowest efficiency rating of {lowestEfficiency}!");
         }
     }
 }
