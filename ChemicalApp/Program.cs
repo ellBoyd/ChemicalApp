@@ -7,7 +7,7 @@ namespace ChemicalApp
     class Program
     {
         //global variables
-        static List<string> allChemicals = new List<string>() { "White Vinegar", "Baking Soda", "Bleach", "Ethanol", "Hydrogen peroxide", "Lemon", "Detergent",
+        static List<string> allChemicals = new List<string>() { "White Vinegar", "Baking Soda", "Bleach", "Ethanol", "Hydrogen peroxide", "Lemon", "Detergent", 
             "Eucalyptus Oil", "Peppermint Oil", "Lavender Oil" };
         static List<int> testedChemicals = new List<int>();
         static List<float> efficienciesList = new List<float>();
@@ -48,8 +48,9 @@ namespace ChemicalApp
 
         static string TestedChemicals()
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             string testedChemicalsOutput = "Efficiency of each chemical:\n";
-
+            
             for (int chemicalIndex = 0; chemicalIndex < efficienciesList.Count; chemicalIndex++)
             {
                 testedChemicalsOutput += $"{chemicalIndex + 1}. {allChemicals[testedChemicals[chemicalIndex]]} {efficienciesList[chemicalIndex]}\n";
@@ -65,7 +66,9 @@ namespace ChemicalApp
                 try
                 {
                     //get user to enter a chemical
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Choose a chemical from the list below by entering its corrosponding number:");
+                    Console.ResetColor();
                     Console.WriteLine("\n1. White Vinegar\n2. Baking Soda\n3. Bleach\n4. Ethanol" +
                         "\n5. Hydrogen Peroxide\n6. Lemon\n7. Detergent\n8. Eucalyptus oil\n9. Peppermint oil\n10. Lavender oil\n");
 
@@ -107,7 +110,9 @@ namespace ChemicalApp
             while (true)
             {
                 //get user's choice
-                Console.Write($"\nPress {Console.ForegroundColor = ConsoleColor.Yellow}<ENTER> {Console.ResetColor()} to add another chemical or type 'X'to quit\n");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"\nPress <ENTER> to add another chemical or type 'X'to quit\n");
+                Console.ResetColor();
                 string userInput = Console.ReadLine();
 
                 //Convert user input to uppercase
@@ -198,6 +203,42 @@ namespace ChemicalApp
         //Component 2
         static void Main(string[] args)
         {
+            Console.WriteLine(
+        @"  ______     __  __     ______     __    __     __     ______     ______     __            ______     ______   ______" + "\n" +
+        @" /\  ___\   /\ \_\ \   /\  ___\   /\ \._/  \   /\ \   /\  ___\   /\  __ \   /\ \          /\  __ \   /\  == \ /\  == \" + "\n" +
+        @" \ \ \____  \ \  __ \  \ \  __\   \ \ \._/\ \  \ \ \  \ \ \____  \ \  __ \  \ \ \____     \ \  __ \  \ \  _-/ \ \  _-/" + "\n" +
+        @"  \ \_____\  \ \_\ \_\  \ \_____\  \ \_\ \ \_\  \ \_\  \ \_____\  \ \_\ \_\  \ \_____\     \ \_\ \_\  \ \_\    \ \_\" + "\n" +
+        @"   \/_____/   \/_/\/_/   \/_____/   \/_/  \/_/   \/_/   \/_____/   \/_/\/_/   \/_____/      \/_/\/_/   \/_/     \/_/" + "\n");
+                 
+            Console.WriteLine("INTRODUCTION\n\n" +
+                "Welcome to the lab!\n" +
+                "Cleaning chemical company Hi-Jean International, is looking into developing new,\n" +
+                "revolutionary products for households internationally. As part of their research\n" +
+                "division, you have been set the task to determine the least and most efficient\n" +
+                "chemicals to be used in our products. This Chemical App program allows you to test\n" +
+                "these chemicals.\n\n" +
+                "Let's run down how this program works...");
+
+            Console.WriteLine("Press <ENTER> to continue");
+            Console.ReadLine();
+            Console.Clear();
+
+            Console.WriteLine("" +
+                             
+                "----- How the program functions -----\n\n" +
+                "By entering chemicals from the list, for example, 'Lemon', the program will add a\n" +
+                "solution of 'Lemon' to an amount of live germs. A timer begins and will stop\n" +
+                "after a randomly generated period of time. The remaining live germs will be counted,\n" +
+                "and subtracted from the total live germs from the beginning of testing, divided by the time, to determine the trial's efficiency. This proccess\n" +
+                "is repeated five times, and the results are then added together and divided by five,\n" +
+                "to determine the efficieny of that chemical. You can continue to test more chemicals,\n" +
+                "and at the end of testing, the progam will calculate and display the least and most\n" +
+                "efficent chemicals.");
+            Console.WriteLine("Press <ENTER> to begin testing!");
+            Console.ReadLine();
+            Console.Clear();
+
+
             string flag = "";
             while (!flag.Equals("X"))
             {
@@ -209,8 +250,11 @@ namespace ChemicalApp
 
                 Console.Clear();
             }
-
+            
+            Console.WriteLine("----- Final Results -----");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\nHere are the results!\n");
+            Console.ResetColor();
 
             Console.WriteLine(TestedChemicals());
 
