@@ -48,7 +48,7 @@ namespace ChemicalApp
 
         static string TestedChemicals()
         {
-            
+            //display list of efficiencies
             string testedChemicalsOutput = "Efficiency of each chemical:\n";
             
             for (int chemicalIndex = 0; chemicalIndex < efficienciesList.Count; chemicalIndex++)
@@ -204,6 +204,7 @@ namespace ChemicalApp
         //Component 2
         static void Main(string[] args)
         {
+            //Title
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(
         @"  ______     __  __     ______     __    __     __     ______     ______     __            ______     ______   ______" + "\n" +
@@ -216,7 +217,7 @@ namespace ChemicalApp
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("INTRODUCTION\n\n");
             Console.ResetColor();
-
+             //Brief introductory
             Console.WriteLine("Welcome to the lab!\n" +
                 "Cleaning chemical company Hi-Jean International, is looking into developing new,\n" +
                 "revolutionary products for households internationally. As part of their research\n" +
@@ -245,7 +246,7 @@ namespace ChemicalApp
   @"'._____.'       '._____.'");
             Console.ResetColor();
 
-
+            //Instructional Message
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n----- How the program functions -----");
             Console.ResetColor();
@@ -278,6 +279,7 @@ namespace ChemicalApp
 
                 Console.Clear();
             }
+
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("----- Final Results -----");
             Console.ResetColor();
