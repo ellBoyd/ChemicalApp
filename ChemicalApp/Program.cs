@@ -48,12 +48,12 @@ namespace ChemicalApp
 
         static string TestedChemicals()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             string testedChemicalsOutput = "Efficiency of each chemical:\n";
             
             for (int chemicalIndex = 0; chemicalIndex < efficienciesList.Count; chemicalIndex++)
             {
-                testedChemicalsOutput += $"{chemicalIndex + 1}. {allChemicals[testedChemicals[chemicalIndex]]} {efficienciesList[chemicalIndex]}\n";
+                testedChemicalsOutput += $"{chemicalIndex + 1}. {allChemicals[testedChemicals[chemicalIndex]]} = {efficienciesList[chemicalIndex]}\n";
             }
 
             return testedChemicalsOutput;
@@ -66,7 +66,7 @@ namespace ChemicalApp
                 try
                 {
                     //get user to enter a chemical
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("Choose a chemical from the list below by entering its corrosponding number:");
                     Console.ResetColor();
                     Console.WriteLine("\n1. White Vinegar\n2. Baking Soda\n3. Bleach\n4. Ethanol" +
@@ -110,7 +110,7 @@ namespace ChemicalApp
             while (true)
             {
                 //get user's choice
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"\nPress <ENTER> to add another chemical or type 'X'to quit\n");
                 Console.ResetColor();
                 string userInput = Console.ReadLine();
@@ -160,8 +160,9 @@ namespace ChemicalApp
             float sumEfficiency = 0;
 
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"----- Test Results ------");
-
+            Console.ResetColor();
            
             //Loop 5 time (below)
             for (int test = 0; test < 5; test++)
@@ -203,38 +204,65 @@ namespace ChemicalApp
         //Component 2
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(
         @"  ______     __  __     ______     __    __     __     ______     ______     __            ______     ______   ______" + "\n" +
         @" /\  ___\   /\ \_\ \   /\  ___\   /\ \._/  \   /\ \   /\  ___\   /\  __ \   /\ \          /\  __ \   /\  == \ /\  == \" + "\n" +
         @" \ \ \____  \ \  __ \  \ \  __\   \ \ \._/\ \  \ \ \  \ \ \____  \ \  __ \  \ \ \____     \ \  __ \  \ \  _-/ \ \  _-/" + "\n" +
         @"  \ \_____\  \ \_\ \_\  \ \_____\  \ \_\ \ \_\  \ \_\  \ \_____\  \ \_\ \_\  \ \_____\     \ \_\ \_\  \ \_\    \ \_\" + "\n" +
         @"   \/_____/   \/_/\/_/   \/_____/   \/_/  \/_/   \/_/   \/_____/   \/_/\/_/   \/_____/      \/_/\/_/   \/_/     \/_/" + "\n");
-                 
-            Console.WriteLine("INTRODUCTION\n\n" +
-                "Welcome to the lab!\n" +
+
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("INTRODUCTION\n\n");
+            Console.ResetColor();
+
+            Console.WriteLine("Welcome to the lab!\n" +
                 "Cleaning chemical company Hi-Jean International, is looking into developing new,\n" +
                 "revolutionary products for households internationally. As part of their research\n" +
                 "division, you have been set the task to determine the least and most efficient\n" +
-                "chemicals to be used in our products. This Chemical App program allows you to test\n" +
-                "these chemicals.\n\n" +
-                "Let's run down how this program works...");
+                "chemicals to kill quantities of germs. Chemical App is a program designed for you\n" +
+                "to test chemicals with ease.\n\n" +
+                "Let's run down how this program works...\n");
 
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Press <ENTER> to continue");
+            Console.ResetColor();
             Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("" +
-                             
-                "----- How the program functions -----\n\n" +
-                "By entering chemicals from the list, for example, 'Lemon', the program will add a\n" +
-                "solution of 'Lemon' to an amount of live germs. A timer begins and will stop\n" +
-                "after a randomly generated period of time. The remaining live germs will be counted,\n" +
-                "and subtracted from the total live germs from the beginning of testing, divided by the time, to determine the trial's efficiency. This proccess\n" +
-                "is repeated five times, and the results are then added together and divided by five,\n" +
-                "to determine the efficieny of that chemical. You can continue to test more chemicals,\n" +
-                "and at the end of testing, the progam will calculate and display the least and most\n" +
-                "efficent chemicals.");
-            Console.WriteLine("Press <ENTER> to begin testing!");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(@"   o              o" + "\n" +
+       @"    o                 o" + "\n" +
+     @"   ___             ___" + "\n" +
+     @"   | |             | |" + "\n" +
+     @"   | |             | |" + "\n" +
+     @"   |o|             |o|" + "\n" +
+    @"  .' '.           .' '." + "\n" +
+   @" /  o  \         /  o  \" + "\n" +
+  @":____o__:       :____o__:" + "\n" +
+  @"'._____.'       '._____.'");
+            Console.ResetColor();
+
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n----- How the program functions -----");
+            Console.ResetColor();
+            Console.WriteLine(
+                "\n\nBy entering chemicals from the list, for example, 'Bleach', the program will add a\n" +
+                "solution of Bleach to an amount of live germs. A timer begins and will stop\n" +
+                "after a randomly generated period of time.\n\n" +
+                "To determine a trial's efficiency, the remaining live germs will be counted and\n" +
+                "subtracted from the total live germs from the beginning of testing, then divided by\n" +
+                "the time of the trial. Five trials are carried out to test Bleach, and their\n" +
+                "efficiencies will be added together and divided by five to determine the average\n" +
+                "efficiency of Bleach\n\n" +
+                "You can then add the next chemical to test, or end the program. The program will\n" +
+                "calculate and display the least and most efficent chemicals from your testing.");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nPress <ENTER> to begin testing!");
+            Console.ResetColor();
             Console.ReadLine();
             Console.Clear();
 
@@ -250,9 +278,11 @@ namespace ChemicalApp
 
                 Console.Clear();
             }
-            
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("----- Final Results -----");
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine($"\nHere are the results!\n");
             Console.ResetColor();
 
@@ -260,7 +290,15 @@ namespace ChemicalApp
 
             //Determine most and least efficient chemicals
             Console.WriteLine($"{allChemicals[topChemical -1]} has the highest efficiency rating of {topEfficiency}, " +
-                $"and {allChemicals[lowChemical -1]} has the lowest efficiency rating of {lowestEfficiency}!");
+                $"and {allChemicals[lowChemical -1]} has the lowest efficiency rating of {lowestEfficiency}!\n\n");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Results will be sent to Hi-Jean International Board to be evalulated!\n");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n----- END OF TESTING -----\n\n\n");
+            Console.ResetColor();
         }
     }
 }
