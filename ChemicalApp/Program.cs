@@ -72,7 +72,6 @@ namespace ChemicalApp
                     Console.WriteLine("\n1. White Vinegar\n2. Baking Soda\n3. Bleach\n4. Ethanol" +
                         "\n5. Hydrogen Peroxide\n6. Lemon\n7. Detergent\n8. Eucalyptus oil\n9. Peppermint oil\n10. Lavender oil\n");
 
-                    
 
                     //check if user has entered same chemical more than once
                     int chosenChemical = Convert.ToInt32(Console.ReadLine());
@@ -207,11 +206,11 @@ namespace ChemicalApp
             //Title
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(
-        @"  ______     __  __     ______     __    __     __     ______     ______     __            ______     ______   ______" + "\n" +
-        @" /\  ___\   /\ \_\ \   /\  ___\   /\ \._/  \   /\ \   /\  ___\   /\  __ \   /\ \          /\  __ \   /\  == \ /\  == \" + "\n" +
-        @" \ \ \____  \ \  __ \  \ \  __\   \ \ \._/\ \  \ \ \  \ \ \____  \ \  __ \  \ \ \____     \ \  __ \  \ \  _-/ \ \  _-/" + "\n" +
-        @"  \ \_____\  \ \_\ \_\  \ \_____\  \ \_\ \ \_\  \ \_\  \ \_____\  \ \_\ \_\  \ \_____\     \ \_\ \_\  \ \_\    \ \_\" + "\n" +
-        @"   \/_____/   \/_/\/_/   \/_____/   \/_/  \/_/   \/_/   \/_____/   \/_/\/_/   \/_____/      \/_/\/_/   \/_/     \/_/" + "\n");
+            @"  ______     __  __     ______     __    __     __     ______     ______     __            ______     ______   ______" + "\n" +
+            @" /\  ___\   /\ \_\ \   /\  ___\   /\ \._/  \   /\ \   /\  ___\   /\  __ \   /\ \          /\  __ \   /\  == \ /\  == \" + "\n" +
+            @" \ \ \____  \ \  __ \  \ \  __\   \ \ \._/\ \  \ \ \  \ \ \____  \ \  __ \  \ \ \____     \ \  __ \  \ \  _-/ \ \  _-/" + "\n" +
+            @"  \ \_____\  \ \_\ \_\  \ \_____\  \ \_\ \ \_\  \ \_\  \ \_____\  \ \_\ \_\  \ \_____\     \ \_\ \_\  \ \_\    \ \_\" + "\n" +
+            @"   \/_____/   \/_/\/_/   \/_____/   \/_/  \/_/   \/_/   \/_____/   \/_/\/_/   \/_____/      \/_/\/_/   \/_/     \/_/" + "\n");
 
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
